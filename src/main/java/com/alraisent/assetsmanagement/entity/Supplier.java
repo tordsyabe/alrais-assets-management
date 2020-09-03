@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Getter
@@ -27,5 +28,6 @@ public class Supplier extends BaseEntity {
 
     @Column
     private String phone;
+
 
 }

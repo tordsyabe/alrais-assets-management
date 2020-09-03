@@ -1,4 +1,4 @@
-package com.alraisent.assetsmanagement.controller;
+package com.alraisent.assetsmanagement.controller.api.v1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -15,12 +16,9 @@ import java.time.LocalDate;
 public class Asset extends BaseEntity{
 
     @Column(nullable = false)
-    private Company company;
-
-    @Column(nullable = false)
     private String assetTag;
 
-    @Column
+    @OneToOne
     private Model model;
 
     @Column(nullable = false)
@@ -32,28 +30,22 @@ public class Asset extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private LocalDate purchaseDate;
 
-    @Column
+    @OneToOne
     private Supplier supplier;
 
-    @Column
     private String purchaseNumber;
 
-    @Column
     private String purchaseCost;
 
-    @Column
     private int warranty;
 
-    @Column
     private String notes;
 
     @Column(nullable = false)
-    private Location defaultLocation;
+    private Location location;
 
-    @Column
     private String image;
 
 }

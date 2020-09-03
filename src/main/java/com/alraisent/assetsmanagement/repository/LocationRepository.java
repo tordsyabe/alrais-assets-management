@@ -1,2 +1,9 @@
-package com.alraisent.assetsmanagement.repository;public class LocationRepository {
+package com.alraisent.assetsmanagement.repository;
+
+import com.alraisent.assetsmanagement.entity.Location;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+public interface LocationRepository extends JpaRepository<Location, Long> {
+
 }
