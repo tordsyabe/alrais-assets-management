@@ -10,18 +10,22 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "assetModels")
-public class AssetModel extends BaseEntity{
+@Table(name = "suppliers")
+public class Supplier extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
 
     @Column
-    private Manufacturer manufacturer;
+    private String address;
 
     @Column
-    private Category category;
+    private String contactName;
 
     @Column
-    private String modelNumber;
+    private String email;
+
+    @Column
+    private String phone;
+
 }

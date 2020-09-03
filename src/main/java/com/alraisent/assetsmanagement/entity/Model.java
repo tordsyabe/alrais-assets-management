@@ -10,13 +10,19 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "categories")
-public class Category extends BaseEntity{
+@Table(name = "models")
+public class Model extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
+    @Column
+    private Manufacturer manufacturer;
+
     @Column(nullable = false)
-    private String type;
+    private Category category;
+
+    @Column(nullable = false)
+    private String modelNumber;
 
 }

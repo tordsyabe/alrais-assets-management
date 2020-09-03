@@ -17,7 +17,10 @@ public class Manufacturer extends BaseEntity{
     private String name;
 
     @Column
-    private String url;
+    private String image;
+
+    @Column
+    private String website;
 
     @Column
     private String supportUrl;
@@ -25,7 +28,8 @@ public class Manufacturer extends BaseEntity{
     @Column
     private String supporPhone;
 
-    @Column String supportEmail;
+    @Column
+    private String supportEmail;
 
-    @Column String image;
+
 }
