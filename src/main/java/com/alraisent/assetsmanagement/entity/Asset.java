@@ -24,7 +24,7 @@ public class Asset extends BaseEntity{
     private Model model;
 
     @Column(nullable = false)
-    private String status;
+    private Status status;
 
     @Column(unique = true, nullable = false)
     private String serial;
@@ -46,7 +46,6 @@ public class Asset extends BaseEntity{
 
     @Column
     private int warranty;
-
 
     @Column
     private String notes;

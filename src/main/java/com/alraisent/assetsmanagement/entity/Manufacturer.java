@@ -26,7 +26,7 @@ public class Manufacturer extends BaseEntity{
     private String supportUrl;
 
     @Column
-    private String supporPhone;
+    private String supportPhone;
 
     @Column
     private String supportEmail;

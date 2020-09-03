@@ -3,6 +3,7 @@ package com.alraisent.assetsmanagement.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -10,5 +11,8 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(name = "status")
-public class Status {
+public class Status extends BaseEntity{
+
+    @Column(nullable = false)
+    private String description;
 }
