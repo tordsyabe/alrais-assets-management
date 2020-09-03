@@ -2,6 +2,7 @@ package com.alraisent.assetsmanagement.mapper;
 
 import com.alraisent.assetsmanagement.dto.ModelDto;
 import com.alraisent.assetsmanagement.entity.Model;
+import com.alraisent.assetsmanagement.response.ModelResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
@@ -14,4 +15,6 @@ public interface ModelMapper {
     Model dtoToEntity(ModelDto modelDto);
 
     ModelDto entityToDto(Model model);
+
+    ModelResponse dtoToResponse(ModelDto modelDto);
 }

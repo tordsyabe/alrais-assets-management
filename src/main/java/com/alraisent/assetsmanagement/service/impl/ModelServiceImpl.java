@@ -5,10 +5,12 @@ import com.alraisent.assetsmanagement.mapper.ModelMapper;
 import com.alraisent.assetsmanagement.repository.ModelRepository;
 import com.alraisent.assetsmanagement.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ModelServiceImpl implements ModelService {
 
     private final ModelRepository modelRepository;

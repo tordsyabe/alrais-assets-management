@@ -9,6 +9,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ModelResponse {
 
-    private String id;
+    private String uuid;
+
+    private String name;
+
+    private String modelNumber;
 
 }

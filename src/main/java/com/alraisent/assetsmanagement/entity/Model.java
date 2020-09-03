@@ -17,10 +17,10 @@ public class Model extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column
-    private Manufacturer manufacturer;
-
-    private Category category;
+//    @Column
+//    private Manufacturer manufacturer;
+//
+//    private Category category;
 
     @Column(nullable = false)
     private String modelNumber;

@@ -1,7 +1,6 @@
 package com.alraisent.assetsmanagement.controller.api.v1;
 
-import com.alraisent.assetsmanagement.dto.ModelDto;
-import com.alraisent.assetsmanagement.entity.Model;
+import com.alraisent.assetsmanagement.mapper.ModelMapper;
 import com.alraisent.assetsmanagement.response.ModelResponse;
 import com.alraisent.assetsmanagement.service.ModelService;
 import org.springframework.http.HttpStatus;
@@ -15,15 +14,21 @@ import java.util.List;
 public class ModelController {
 
     private final ModelService modelService;
+    private final ModelMapper modelMapper;
 
-    public ModelController(ModelService modelService) {
+    public ModelController(ModelService modelService, ModelMapper modelMapper) {
         this.modelService = modelService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    private List<ModelDto> getAllModels() {
+    private List<ModelResponse> getAllModels() {
 
-        return modelService.getModels();
+        List<ModelResponse> modelResponses =  new ArrayList<>();
+
+        modelService.getModels().forEach(modelDto -> modelResponses.add(modelMapper.dtoToResponse(modelDto)));
+
+        return modelResponses;
     }
 }
