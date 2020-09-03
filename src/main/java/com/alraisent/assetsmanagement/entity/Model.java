@@ -20,7 +20,7 @@ public class Model extends BaseEntity {
 //    @Column
 //    private Manufacturer manufacturer;
 //
-//    private Category category;
+    private Category category;
 
     @Column(nullable = false)
     private String modelNumber;

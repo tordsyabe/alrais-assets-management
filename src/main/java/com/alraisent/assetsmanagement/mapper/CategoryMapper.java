@@ -1,0 +1,17 @@
+package com.alraisent.assetsmanagement.mapper;
+
+import com.alraisent.assetsmanagement.dto.CategoryDto;
+import com.alraisent.assetsmanagement.entity.Category;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
+import org.mapstruct.factory.Mappers;
+
+@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+public interface CategoryMapper {
+
+    CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
+
+    Category dtoToEntity(CategoryDto categoryDto);
+
+    CategoryDto entityToDto(Category category);
+}
