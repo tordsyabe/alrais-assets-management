@@ -23,7 +23,7 @@ public class ModelController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    private List<ModelResponse> getAllModels() {
+    private List<ModelResponse> showAllModels() {
 
         List<ModelResponse> modelResponses =  new ArrayList<>();
 

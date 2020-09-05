@@ -8,4 +8,6 @@ import java.util.List;
 public interface CategoryService {
 
     List<CategoryDto> getCategories();
+
+    CategoryDto saveCategory(CategoryDto categoryDto);
 }
