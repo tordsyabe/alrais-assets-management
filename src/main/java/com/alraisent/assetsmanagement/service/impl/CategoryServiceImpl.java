@@ -50,7 +50,8 @@ public class CategoryServiceImpl implements CategoryService {
 
         if(categoryDto.getUuid() != null) {
             Category categoryFromDb = categoryRepository.findByUuid(categoryDto.getUuid());
-            BeanUtils.copyProperties(categoryFromDb, category);
+            category.setId(categoryFromDb.getId());
+            category.setCreatedAt(categoryFromDb.getCreatedAt());
             category.setUpdatedAt(LocalDateTime.now());
 
             return categoryMapper.entityToDto(categoryRepository.save(category));

@@ -19,5 +19,5 @@ public interface ManufacturerMapper {
 
     ManufacturerResponse dtoToResponse(ManufacturerDto manufacturerDto);
 
-    ManufacturerRequest dtoToRequest(ManufacturerDto manufacturerDto);
+    ManufacturerDto requestToDto(ManufacturerRequest manufacturerRequest);
 }

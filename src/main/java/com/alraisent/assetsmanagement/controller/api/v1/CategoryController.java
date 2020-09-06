@@ -35,6 +35,13 @@ public class CategoryController {
         return categoryResponseList;
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CategoryResponse showCategory(@PathVariable String id) {
+
+        return categoryMapper.dtoToResponse(categoryService.getCategoryById(id));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public CategoryResponse saveCategory(@RequestBody CategoryRequest categoryRequest) {
