@@ -13,5 +13,5 @@ public interface CategoryService {
 
     CategoryDto saveCategory(CategoryDto categoryDto);
 
-    void deleteCategory(CategoryDto categoryDto);
+    void deleteCategory(String id);
 }

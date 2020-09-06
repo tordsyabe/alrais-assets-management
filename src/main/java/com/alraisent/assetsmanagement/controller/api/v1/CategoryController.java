@@ -46,4 +46,10 @@ public class CategoryController {
         return categoryMapper.dtoToResponse(savedCategory);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteCategory(@PathVariable String id) {
+        categoryService.deleteCategory(id);
+    }
+
 }

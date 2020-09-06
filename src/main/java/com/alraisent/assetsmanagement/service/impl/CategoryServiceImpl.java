@@ -5,6 +5,8 @@ import com.alraisent.assetsmanagement.entity.Category;
 import com.alraisent.assetsmanagement.mapper.CategoryMapper;
 import com.alraisent.assetsmanagement.repository.CategoryRepository;
 import com.alraisent.assetsmanagement.service.CategoryService;
+import com.fasterxml.jackson.databind.util.BeanUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -45,9 +48,9 @@ public class CategoryServiceImpl implements CategoryService {
 
         Category category = categoryMapper.dtoToEntity(categoryDto);
 
-        if(!categoryDto.getUuid().isEmpty()) {
+        if(categoryDto.getUuid() != null) {
             Category categoryFromDb = categoryRepository.findByUuid(categoryDto.getUuid());
-            category.setId(categoryFromDb.getId());
+            BeanUtils.copyProperties(categoryFromDb, category);
             category.setUpdatedAt(LocalDateTime.now());
 
             return categoryMapper.entityToDto(categoryRepository.save(category));
@@ -55,14 +58,16 @@ public class CategoryServiceImpl implements CategoryService {
 
         category.setCreatedAt(LocalDateTime.now());
 
+        category.setUuid(UUID.randomUUID().toString());
+
         return categoryMapper.entityToDto(categoryRepository.save(category));
 
     }
 
     @Override
-    public void deleteCategory(CategoryDto categoryDto) {
+    public void deleteCategory(String id) {
 
-        Category categoryToDelete = categoryRepository.findByUuid(categoryDto.getUuid());
+        Category categoryToDelete = categoryRepository.findByUuid(id);
 
         categoryRepository.delete(categoryToDelete);
     }
