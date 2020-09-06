@@ -8,6 +8,8 @@ import com.alraisent.assetsmanagement.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,14 +35,35 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public CategoryDto getCategoryById(String id) {
+
+        return categoryMapper.entityToDto(categoryRepository.findByUuid(id));
+    }
+
+    @Override
     public CategoryDto saveCategory(CategoryDto categoryDto) {
 
         Category category = categoryMapper.dtoToEntity(categoryDto);
 
-        category.setCreatedAt(LocalDate.now());
+        if(!categoryDto.getUuid().isEmpty()) {
+            Category categoryFromDb = categoryRepository.findByUuid(categoryDto.getUuid());
+            category.setId(categoryFromDb.getId());
+            category.setUpdatedAt(LocalDateTime.now());
 
-        categoryRepository.save(category);
+            return categoryMapper.entityToDto(categoryRepository.save(category));
+        }
+
+        category.setCreatedAt(LocalDateTime.now());
 
         return categoryMapper.entityToDto(categoryRepository.save(category));
+
+    }
+
+    @Override
+    public void deleteCategory(CategoryDto categoryDto) {
+
+        Category categoryToDelete = categoryRepository.findByUuid(categoryDto.getUuid());
+
+        categoryRepository.delete(categoryToDelete);
     }
 }

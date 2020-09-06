@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -25,12 +26,12 @@ public class BaseEntity implements Serializable {
     private String uuid = UUID.randomUUID().toString();
 
     @Column
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     @Column
-    private LocalDate updatedAt;
+    private LocalDateTime updatedAt;
 
     @Column
-    private LocalDate deletedAt;
+    private LocalDateTime deletedAt;
 
 }

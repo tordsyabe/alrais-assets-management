@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -19,9 +20,9 @@ public class BaseDto implements Serializable {
 
     private String uuid = UUID.randomUUID().toString();
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
-    private LocalDate updatedAt;
+    private LocalDateTime updatedAt;
 
-    private LocalDate deletedAt;
+    private LocalDateTime deletedAt;
 }
