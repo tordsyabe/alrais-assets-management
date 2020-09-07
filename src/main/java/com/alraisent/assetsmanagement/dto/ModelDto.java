@@ -13,8 +13,8 @@ public class ModelDto extends BaseDto {
 
     private String name;
 
-//    private ManufacturerDto manufacturerDto;
-//
+    private ManufacturerDto manufacturerDto;
+
     private CategoryDto categoryDto;
 
     private String modelNumber;

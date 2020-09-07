@@ -18,4 +18,6 @@ public class ModelResponse {
 
     private CategoryResponse categoryResponse;
 
+    private ManufacturerResponse manufacturerResponse;
+
 }
