@@ -3,10 +3,7 @@ package com.alraisent.assetsmanagement.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -17,10 +14,10 @@ public class Model extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column
+    @ManyToOne
     private Manufacturer manufacturer;
 
-    @Column
+    @ManyToOne
     private Category category;
 
     @Column(nullable = false)

@@ -5,12 +5,15 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "manufacturer")
+@Table(name = "manufacturers")
 public class Manufacturer extends BaseEntity{
 
     @Column(nullable = false)
@@ -31,5 +34,6 @@ public class Manufacturer extends BaseEntity{
     @Column
     private String supportEmail;
 
-
+    @OneToMany(mappedBy = "manufacturer")
+    private List<Model> models = new ArrayList<>();
 }
