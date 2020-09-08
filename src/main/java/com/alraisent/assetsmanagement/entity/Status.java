@@ -14,5 +14,11 @@ import javax.persistence.Table;
 public class Status extends BaseEntity{
 
     @Column(nullable = false)
-    private String description;
+    private String name;
+
+    @Column
+    private String type;
+
+    @Column
+    private String notes;
 }
