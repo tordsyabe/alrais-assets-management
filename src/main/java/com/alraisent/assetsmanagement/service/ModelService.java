@@ -8,5 +8,9 @@ public interface ModelService {
 
     List<ModelDto> getModels();
 
+    ModelDto getModelById(String id);
+
     ModelDto saveModel(ModelDto modelDto);
+
+    void deleteModel(String id);
 }

@@ -34,6 +34,13 @@ public class ModelController {
         return modelResponses;
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ModelResponse showModel(@PathVariable String id) {
+
+        return modelMapper.dtoToResponse(modelService.getModelById(id));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public ModelResponse saveModel(@RequestBody ModelRequest modelRequest) {
@@ -41,6 +48,12 @@ public class ModelController {
         ModelDto modelDto = modelMapper.requestToDto(modelRequest);
 
         return modelMapper.dtoToResponse(modelService.saveModel(modelDto));
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteModel(@PathVariable String id) {
+        modelService.deleteModel(id);
     }
 
 }

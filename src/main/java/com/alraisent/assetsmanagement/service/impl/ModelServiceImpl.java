@@ -3,6 +3,7 @@ package com.alraisent.assetsmanagement.service.impl;
 import com.alraisent.assetsmanagement.dto.CategoryDto;
 import com.alraisent.assetsmanagement.dto.ManufacturerDto;
 import com.alraisent.assetsmanagement.dto.ModelDto;
+import com.alraisent.assetsmanagement.entity.Category;
 import com.alraisent.assetsmanagement.entity.Model;
 import com.alraisent.assetsmanagement.mapper.ModelMapper;
 import com.alraisent.assetsmanagement.repository.ModelRepository;
@@ -12,6 +13,7 @@ import com.alraisent.assetsmanagement.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -44,6 +46,12 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
+    public ModelDto getModelById(String id) {
+
+        return modelMapper.entityToDto(modelRepository.findByUuid(id));
+    }
+
+    @Override
     public ModelDto saveModel(ModelDto modelDto) {
 
         ManufacturerDto manufacturerDto = manufacturerService.getManufacturerById(modelDto.getManufacturerId());
@@ -51,10 +59,33 @@ public class ModelServiceImpl implements ModelService {
 
         modelDto.setCategoryDto(categoryDto);
         modelDto.setManufacturerDto(manufacturerDto);
+
+        if(modelDto.getUuid() != null) {
+            Model modelFromDb = modelRepository.findByUuid(modelDto.getUuid());
+            modelDto.setId(modelFromDb.getId());
+            modelDto.setCreatedAt(modelFromDb.getCreatedAt());
+            modelDto.setUpdatedAt(LocalDateTime.now());
+
+            Model savedModel = modelRepository.save(modelMapper.dtoToEntity(modelDto));
+
+            return modelMapper.entityToDto(savedModel);
+        }
+
         modelDto.setUuid(UUID.randomUUID().toString());
+        modelDto.setCreatedAt(LocalDateTime.now());
 
         Model savedModel = modelRepository.save(modelMapper.dtoToEntity(modelDto));
 
         return modelMapper.entityToDto(savedModel);
     }
+
+    @Override
+    public void deleteModel(String id) {
+
+        Model model = modelRepository.findByUuid(id);
+
+        modelRepository.delete(model);
+    }
+
+
 }
