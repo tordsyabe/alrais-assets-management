@@ -18,4 +18,8 @@ public class ModelDto extends BaseDto {
     private CategoryDto categoryDto;
 
     private String modelNumber;
+
+    private String manufacturerId;
+
+    private String categoryId;
 }

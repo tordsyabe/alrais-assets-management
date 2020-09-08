@@ -7,4 +7,6 @@ import java.util.List;
 public interface ModelService {
 
     List<ModelDto> getModels();
+
+    ModelDto saveModel(ModelDto modelDto);
 }

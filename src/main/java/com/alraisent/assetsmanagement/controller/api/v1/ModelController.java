@@ -1,6 +1,8 @@
 package com.alraisent.assetsmanagement.controller.api.v1;
 
+import com.alraisent.assetsmanagement.dto.ModelDto;
 import com.alraisent.assetsmanagement.mapper.ModelMapper;
+import com.alraisent.assetsmanagement.request.ModelRequest;
 import com.alraisent.assetsmanagement.response.ModelResponse;
 import com.alraisent.assetsmanagement.service.ModelService;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,7 @@ public class ModelController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    private List<ModelResponse> showAllModels() {
+    public List<ModelResponse> showAllModels() {
 
         List<ModelResponse> modelResponses =  new ArrayList<>();
 
@@ -31,4 +33,14 @@ public class ModelController {
 
         return modelResponses;
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public ModelResponse saveModel(@RequestBody ModelRequest modelRequest) {
+
+        ModelDto modelDto = modelMapper.requestToDto(modelRequest);
+
+        return modelMapper.dtoToResponse(modelService.saveModel(modelDto));
+    }
+
 }

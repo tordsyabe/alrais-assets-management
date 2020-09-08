@@ -1,9 +1,8 @@
 package com.alraisent.assetsmanagement.mapper;
 
 import com.alraisent.assetsmanagement.dto.ModelDto;
-import com.alraisent.assetsmanagement.entity.Manufacturer;
 import com.alraisent.assetsmanagement.entity.Model;
-import com.alraisent.assetsmanagement.response.CategoryResponse;
+import com.alraisent.assetsmanagement.request.ModelRequest;
 import com.alraisent.assetsmanagement.response.ModelResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -26,4 +25,6 @@ public interface ModelMapper {
     @Mapping(target = "categoryResponse", source = "modelDto.categoryDto")
     @Mapping(target = "manufacturerResponse", source = "modelDto.manufacturerDto")
     ModelResponse dtoToResponse(ModelDto modelDto);
+
+    ModelDto requestToDto(ModelRequest modelRequest);
 }
