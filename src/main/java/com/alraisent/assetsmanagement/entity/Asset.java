@@ -3,11 +3,8 @@ package com.alraisent.assetsmanagement.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import java.time.LocalDate;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,11 +15,8 @@ public class Asset extends BaseEntity{
     @Column(nullable = false)
     private String assetTag;
 
-    @OneToOne
+    @ManyToOne
     private Model model;
-
-    @Column(nullable = false)
-    private Status status;
 
     @Column(unique = true, nullable = false)
     private String serial;
@@ -30,10 +24,7 @@ public class Asset extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
-    private LocalDate purchaseDate;
-
-    @OneToOne
-    private Supplier supplier;
+    private LocalDateTime purchaseDate;
 
     private String purchaseNumber;
 
@@ -43,8 +34,13 @@ public class Asset extends BaseEntity{
 
     private String notes;
 
-    @Column(nullable = false)
-    private Location location;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Location currentLocation;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Status status;
 
     private String image;
 

@@ -5,7 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +24,7 @@ public class Status extends BaseEntity{
 
     @Column
     private String notes;
+
+    @OneToMany(mappedBy = "status")
+    private List<Asset> assets = new ArrayList<>();
 }
