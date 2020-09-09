@@ -46,9 +46,9 @@ public class StatusServiceImpl implements StatusService {
         Status status = statusMapper.dtoToEntity(statusDto);
 
         if(statusDto.getUuid() != null) {
-            Status categoryFromDb = statusRepository.findByUuid(statusDto.getUuid());
-            status.setId(categoryFromDb.getId());
-            status.setCreatedAt(categoryFromDb.getCreatedAt());
+            Status statusFromDb = statusRepository.findByUuid(statusDto.getUuid());
+            status.setId(statusFromDb.getId());
+            status.setCreatedAt(statusFromDb.getCreatedAt());
             status.setUpdatedAt(LocalDateTime.now());
 
             return statusMapper.entityToDto(statusRepository.save(status));
