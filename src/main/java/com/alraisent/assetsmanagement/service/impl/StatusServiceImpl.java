@@ -64,6 +64,8 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public void deleteStatus(String id) {
+        Status statusToDelete = statusRepository.findByUuid(id);
 
+        statusRepository.delete(statusToDelete);
     }
 }

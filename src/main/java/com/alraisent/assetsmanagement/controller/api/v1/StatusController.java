@@ -35,6 +35,13 @@ public class StatusController {
         return statusResponseList;
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public StatusResponse showStatus(@PathVariable String id) {
+
+        return statusMapper.dtoToResponse(statusService.getStatusById(id));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public StatusResponse saveStatus(@RequestBody StatusRequest statusRequest) {
@@ -42,5 +49,11 @@ public class StatusController {
         StatusDto statusDto = statusMapper.requestToDto(statusRequest);
 
         return statusMapper.dtoToResponse(statusService.saveStatus(statusDto));
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteStatus(@PathVariable String id) {
+        statusService.deleteStatus(id);
     }
 }
