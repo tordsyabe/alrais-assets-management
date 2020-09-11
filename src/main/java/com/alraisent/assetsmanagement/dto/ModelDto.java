@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,4 +25,6 @@ public class ModelDto extends BaseDto {
     private String manufacturerId;
 
     private String categoryId;
+
+    private List<AssetDto> assetDtos = new ArrayList<>();
 }

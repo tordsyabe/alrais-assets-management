@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,16 +16,13 @@ public class Asset extends BaseEntity{
     @Column(nullable = false)
     private String assetTag;
 
-    @ManyToOne
-    private Model model;
-
     @Column(unique = true, nullable = false)
     private String serial;
 
     @Column(nullable = false)
     private String name;
 
-    private LocalDateTime purchaseDate;
+    private LocalDate purchaseDate;
 
     private String purchaseNumber;
 
@@ -36,11 +34,14 @@ public class Asset extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Location currentLocation;
+    private Location location;
 
     @ManyToOne
     @JoinColumn(nullable = false)
     private Status status;
+
+    @ManyToOne
+    private Model model;
 
     private String image;
 

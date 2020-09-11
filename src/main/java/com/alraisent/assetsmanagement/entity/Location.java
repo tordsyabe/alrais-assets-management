@@ -25,7 +25,7 @@ public class Location extends BaseEntity{
     @Column
     private String city;
 
-    @OneToMany(mappedBy = "currentLocation")
+    @OneToMany(mappedBy = "location")
     private List<Asset> assets = new ArrayList<>();
 
 }
