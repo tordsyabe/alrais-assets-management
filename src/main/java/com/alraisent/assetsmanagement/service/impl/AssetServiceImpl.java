@@ -65,6 +65,7 @@ public class AssetServiceImpl implements AssetService {
             assetDto.setId(assetFromDb.getId());
             assetDto.setCreatedAt(assetFromDb.getCreatedAt());
             assetDto.setUpdatedAt(LocalDateTime.now());
+            assetDto.setSerial(assetFromDb.getSerial());
 
             Asset savedAsset = assetRepository.save(assetMapper.dtoToEntity(assetDto));
 
