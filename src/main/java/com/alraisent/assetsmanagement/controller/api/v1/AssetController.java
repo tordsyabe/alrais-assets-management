@@ -28,11 +28,14 @@ public class AssetController {
     public List<AssetResponse> showAllAssets() {
 
         List<AssetResponse> assetResponseList = new ArrayList<>();
+        System.out.println("COMPARE");
 
         assetService.getAssets().forEach(assetDto -> assetResponseList
                 .add(assetMapper.dtoToResponse(assetDto)));
 
         return assetResponseList;
+
+
     }
 
     @GetMapping("/{id}")
