@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(uses = {LocationMapper.class, StatusMapper.class, ModelMapper.class, }, unmappedSourcePolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AssetMapper {
 
     AssetMapper INSTANCE = Mappers.getMapper(AssetMapper.class);
